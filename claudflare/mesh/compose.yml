@@ -22,6 +22,11 @@ services:
     volumes:
       - mesh_data:/var/lib/cloudflare-warp
     restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20MB"
+        max-file: "5"
 
 volumes:
   mesh_data:
