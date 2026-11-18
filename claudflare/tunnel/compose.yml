@@ -1,0 +1,15 @@
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    restart: unless-stopped
+    env_file:
+      - ./cloudflared/.env
+    environment:
+      #- TUNNEL_TOKEN=${CLOUDFLARED_TOKEN}
+      - TZ=Asia/Shanghai
+    command: tunnel
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20MB"
+        max-file: "5"
